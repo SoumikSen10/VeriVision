@@ -1,4 +1,5 @@
 import os
+import sys
 import cv2
 import shutil
 from lstmScript import process_frame_with_lstm  # Import LSTM model processing function
@@ -117,8 +118,8 @@ def process_video(video_path, frame_skip=30):
     #print("Removing frames storage directory")
     #remove_frames_dir(frames_dir_path)
 
-# Specify the video file and the frame skip interval (1 frame per second)
-video_file = './ML/testvideo.mp4'  # Replace with your actual video path
-frame_skip = 30  # Set frame skip interval based on live stream requirements (e.g., 30 for 1 frame per second in a 30 fps video)
+# The video file will be passed as an argument from the deepfakeDetection controller
+video_file = sys.argv[1]  # Get video file path from command-line argument
+frame_skip = 3  # You can dynamically change this as needed
 
 process_video(video_file, frame_skip)
